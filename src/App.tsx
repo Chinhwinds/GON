@@ -3,6 +3,7 @@ import MascotSection from './components/MascotSection'
 import CardGameSection from './components/CardGameSection'
 import CardList from './components/CardList'
 import CardDetail from './components/CardDetail'
+import StoryGenerator from './components/StoryGenerator'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
@@ -26,6 +27,9 @@ function App() {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/cards">Bộ sưu tập thẻ</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/story">Tạo câu truyện</Link>
                 </li>
               </ul>
             </div>
@@ -51,6 +55,7 @@ function App() {
           } />
           <Route path="/cards" element={<CardList />} />
           <Route path="/card/:id" element={<CardDetail />} />
+          <Route path="/story" element={<StoryGenerator />} />
         </Routes>
 
         <footer className="bg-dark text-white text-center py-4">
