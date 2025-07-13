@@ -1,9 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
 import { cards } from '../data/cards';
-
+import type { Card } from '../data/cards';
 const CardDetail = () => {
     const { id } = useParams<{ id: string }>();
-    const card = cards.find(c => c.id === id);
+    const card = cards.find((c: Card) => c.id === id);
 
     if (!card) {
         return (
@@ -57,99 +57,83 @@ const CardDetail = () => {
                     </nav>
                 </div>
 
-                <div className="col-lg-8">
-                    <div className="card shadow-sm border-0">
-                        <div className="card-body p-5">
-                            <div className="d-flex justify-content-between align-items-start mb-4">
-                                <div className="display-1">{getTypeIcon(card.type)}</div>
-                                <span className={`badge ${getTypeBadge(card.type)} fs-6`}>
-                                    {card.type}
-                                </span>
-                            </div>
-
-                            <h1 className="display-5 fw-bold mb-3">{card.name}</h1>
-
-                            <p className="lead text-muted mb-4">{card.description}</p>
-
-                            <div className="row g-4 mb-4">
-                                <div className="col-md-6">
-                                    <div className="card bg-light border-0">
-                                        <div className="card-body text-center">
-                                            <h6 className="text-muted mb-2">Chi phí</h6>
-                                            <div className="display-6 fw-bold text-success">{card.cost}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {card.power > 0 && (
-                                    <div className="col-md-6">
-                                        <div className="card bg-light border-0">
-                                            <div className="card-body text-center">
-                                                <h6 className="text-muted mb-2">Sức mạnh</h6>
-                                                <div className="display-6 fw-bold text-danger">{card.power}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="mb-4">
-                                <h5 className="fw-bold mb-3">Thông tin chi tiết</h5>
-                                <div className="row g-3">
-                                    <div className="col-md-6">
-                                        <div className="d-flex justify-content-between">
-                                            <span className="text-muted">ID:</span>
-                                            <span className="fw-semibold">{card.id}</span>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="d-flex justify-content-between">
-                                            <span className="text-muted">Loại:</span>
-                                            <span className="fw-semibold">{card.type}</span>
-                                        </div>
-                                    </div>
-                                </div>
+                <div className="col-lg-6">
+                    <div className="card shadow-sm border-0 h-100">
+                        <div className="position-relative">
+                            <img
+                                src={card.image}
+                                alt={card.name}
+                                className="card-img-top"
+                                style={{ height: '400px', objectFit: 'cover' }}
+                                onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg==';
+                                }}
+                            />
+                            <span className={`position-absolute top-0 end-0 m-3 badge ${getTypeBadge(card.type)} fs-6`}>
+                                {card.type}
+                            </span>
+                        </div>
+                        <div className="card-body p-4">
+                            <div className="text-center mb-3">
+                                <div className="fs-1 mb-2">{getTypeIcon(card.type)}</div>
+                                <h3 className="fw-bold">{card.name}</h3>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="col-lg-4">
-                    <div className="card shadow-sm border-0">
-                        <div className="card-body p-4">
-                            <h5 className="fw-bold mb-3">Hành động</h5>
+                <div className="col-lg-6">
+                    <div className="card shadow-sm border-0 h-100">
+                        <div className="card-body p-5">
+                            <h2 className="fw-bold mb-4">Chi tiết thẻ</h2>
+
+                            <div className="mb-4">
+                                <h5 className="text-success fw-bold mb-2">Mô tả</h5>
+                                <p className="lead">{card.description}</p>
+                            </div>
+
+                            <div className="mb-4">
+                                <h5 className="text-success fw-bold mb-2">Hiệu ứng</h5>
+                                <div className="alert alert-light border-success">
+                                    <strong>{card.effect}</strong>
+                                </div>
+                            </div>
+
+                            {card.flavorText && (
+                                <div className="mb-4">
+                                    <h5 className="text-success fw-bold mb-2">Lời khuyên</h5>
+                                    <blockquote className="blockquote">
+                                        <p className="fst-italic text-muted">"{card.flavorText}"</p>
+                                    </blockquote>
+                                </div>
+                            )}
+
+                            <div className="mb-4">
+                                <h5 className="text-success fw-bold mb-2">Thông tin khác</h5>
+                                <div className="row g-2">
+                                    <div className="col-6">
+                                        <small className="text-muted">ID: {card.id}</small>
+                                    </div>
+                                    <div className="col-6">
+                                        <small className="text-muted">Bộ: {card.set}</small>
+                                    </div>
+                                    <div className="col-6">
+                                        <small className="text-muted">Nghệ sĩ: {card.artist}</small>
+                                    </div>
+                                    <div className="col-6">
+                                        <small className="text-muted">Loại: {card.type}</small>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div className="d-grid gap-2">
                                 <Link to="/cards" className="btn btn-outline-success">
                                     ← Quay lại bộ sưu tập
                                 </Link>
-                                <button className="btn btn-success">
-                                    Thêm vào bộ sưu tập
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="card shadow-sm border-0 mt-4">
-                        <div className="card-body p-4">
-                            <h5 className="fw-bold mb-3">Thẻ liên quan</h5>
-                            <div className="list-group list-group-flush">
-                                {cards
-                                    .filter(c => c.type === card.type && c.id !== card.id)
-                                    .slice(0, 3)
-                                    .map(relatedCard => (
-                                        <Link
-                                            key={relatedCard.id}
-                                            to={`/card/${relatedCard.id}`}
-                                            className="list-group-item list-group-item-action border-0 px-0"
-                                        >
-                                            <div className="d-flex align-items-center">
-                                                <span className="me-2">{getTypeIcon(relatedCard.type)}</span>
-                                                <div>
-                                                    <div className="fw-semibold">{relatedCard.name}</div>
-                                                    <small className="text-muted">{relatedCard.type}</small>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    ))}
+                                <Link to="/" className="btn btn-success">
+                                    Về trang chủ
+                                </Link>
                             </div>
                         </div>
                     </div>

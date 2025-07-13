@@ -25,9 +25,16 @@ const MascotSection = () => {
                     <div className="col-lg-6">
                         <div className="text-center">
                             <div className="bg-success text-white rounded-3 p-5 shadow-lg">
-                                <div className="display-1 mb-3">🌱</div>
-                                <h4 className="fw-bold mb-2">Linh vật môi trường</h4>
-                                <small className="opacity-75">Thêm linh vật bảo vệ môi trường của bạn ở đây</small>
+                                <div className="mb-3">
+                                    <img
+                                        src="/img/mascot.PNG"
+                                        alt="Linh vật GON"
+                                        className="img-fluid rounded"
+                                        style={{ maxHeight: '200px', objectFit: 'contain' }}
+                                    />
+                                </div>
+                                <h4 className="fw-bold mb-2">Linh vật GON</h4>
+                                <small className="opacity-75">Bảo vệ môi trường cùng chúng tôi</small>
                             </div>
                         </div>
                     </div>

@@ -167,6 +167,25 @@ body {
   box-shadow: 0 8px 25px rgba(60, 179, 113, 0.15);
 }
 
+/* Card hover effects */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Card image styles */
+.card-img-top {
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
 /* Buttons */
 .btn-success {
   background: linear-gradient(135deg, var(--primary-green), var(--dark-green)) !important;
@@ -191,6 +210,20 @@ body {
   background: var(--primary-green) !important;
   color: white !important;
   transform: translateY(-1px);
+}
+
+/* Navigation button styles */
+.nav-link.btn {
+  background: none !important;
+  border: none !important;
+  padding: 0.5rem 1rem !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-decoration: none;
+}
+
+.nav-link.btn:hover {
+  color: var(--accent-green) !important;
+  background: none !important;
 }
 
 /* Badges */
@@ -375,4 +408,9 @@ footer {
 .page-item.active .page-link {
   background-color: var(--primary-green);
   border-color: var(--primary-green);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
