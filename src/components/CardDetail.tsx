@@ -6,7 +6,6 @@ import type { Card } from '../data/cards';
 const CardDetail = () => {
     const { id } = useParams<{ id: string }>();
     const [isLoaded, setIsLoaded] = useState(false);
-    const [imageLoaded, setImageLoaded] = useState(false);
     const card = cards.find((c: Card) => c.id === id);
 
     useEffect(() => {
@@ -83,7 +82,6 @@ const CardDetail = () => {
                                             const target = e.target as HTMLImageElement;
                                             target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg==';
                                         }}
-                                        onLoad={() => setImageLoaded(true)}
                                     />
                                     <span className={`position-absolute top-0 end-0 m-3 badge ${getTypeBadge(card.type)} fs-6 pulse-badge`}>
                                         {card.type}
