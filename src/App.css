@@ -186,161 +186,164 @@ body {
   transform: scale(1.05);
 }
 
-/* Buttons */
-.btn-success {
-  background: linear-gradient(135deg, var(--primary-green), var(--dark-green)) !important;
-  border: none !important;
-  box-shadow: 0 2px 8px rgba(60, 179, 113, 0.3);
+/* Enhanced button effects */
+.btn-enhanced {
+  position: relative;
+  overflow: hidden;
   transition: all 0.3s ease;
+  border-width: 2px;
 }
 
-.btn-success:hover {
-  background: linear-gradient(135deg, var(--dark-green), var(--primary-green)) !important;
+.btn-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.btn-enhanced:hover::before {
+  width: 200%;
+  height: 200%;
+}
+
+.btn-enhanced:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(60, 179, 113, 0.4);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.btn-outline-success {
-  color: var(--primary-green) !important;
-  border-color: var(--primary-green) !important;
+/* Card overlay effects */
+.card-hover-enhanced {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  position: relative;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(40, 167, 69, 0.9), rgba(23, 162, 184, 0.9));
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.card-hover-enhanced:hover .card-overlay {
+  opacity: 1;
+}
+
+.card-overlay-content {
+  text-align: center;
+  color: white;
+  transform: translateY(20px);
   transition: all 0.3s ease;
 }
 
-.btn-outline-success:hover {
-  background: var(--primary-green) !important;
-  color: white !important;
-  transform: translateY(-1px);
+.card-hover-enhanced:hover .card-overlay-content {
+  transform: translateY(0);
 }
 
-/* Navigation button styles */
-.nav-link.btn {
-  background: none !important;
-  border: none !important;
-  padding: 0.5rem 1rem !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  text-decoration: none;
+.view-details {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.nav-link.btn:hover {
-  color: var(--accent-green) !important;
-  background: none !important;
+/* Badge pulse effect */
+.pulse-badge {
+  animation: pulse 2s infinite;
 }
 
-/* Badges */
-.badge.bg-success {
-  background: var(--primary-green) !important;
-}
-
-.badge.bg-info {
-  background: var(--accent-green) !important;
-  color: var(--text-dark) !important;
-}
-
-.badge.bg-danger {
-  background: #e74c3c !important;
-}
-
-.badge.bg-warning {
-  background: #f39c12 !important;
-  color: white !important;
-}
-
-.badge.bg-secondary {
-  background: #95a5a6 !important;
-}
-
-.badge.bg-primary {
-  background: var(--medium-green) !important;
-}
-
-/* Form elements */
-.form-control:focus {
-  border-color: var(--accent-green) !important;
-  box-shadow: 0 0 0 0.25rem rgba(178, 236, 93, 0.25) !important;
-}
-
-.form-select:focus {
-  border-color: var(--accent-green) !important;
-  box-shadow: 0 0 0 0.25rem rgba(178, 236, 93, 0.25) !important;
-}
-
-/* Links */
-a {
-  color: var(--primary-green);
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: var(--dark-green);
-}
-
-/* Text colors */
-.text-success {
-  color: var(--primary-green) !important;
-}
-
-.text-muted {
-  color: #6c757d !important;
-}
-
-/* Background colors */
-.bg-light {
-  background-color: var(--light-bg) !important;
-}
-
-.bg-white {
-  background-color: white !important;
-}
-
-/* Footer */
-footer {
-  background: linear-gradient(135deg, var(--dark-green), var(--primary-green)) !important;
-  color: white;
-}
-
-/* Hover effects */
-.hover-lift:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(60, 179, 113, 0.2);
-}
-
-/* Custom gradients */
-.gradient-green {
-  background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
-}
-
-.gradient-dark-green {
-  background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
-}
-
-/* Ensure dropdown is visible */
-.dropdown-menu {
-  z-index: 1050;
-  border: 1px solid var(--border-light);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.dropdown-item:hover {
-  background-color: var(--light-bg);
-  color: var(--primary-green);
-}
-
-.dropdown-item.active {
-  background-color: var(--primary-green);
-  color: white;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .language-switcher-btn {
-    margin-top: 0.5rem;
-    width: 100%;
-    justify-content: center;
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
   }
 
-  .card {
-    margin-bottom: 1rem;
+  70% {
+    box-shadow: 0 0 0 10px rgba(40, 167, 69, 0);
   }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+  }
+}
+
+/* Type icon animation */
+.type-icon {
+  transition: all 0.3s ease;
+}
+
+.card:hover .type-icon {
+  transform: rotate(360deg) scale(1.2);
+}
+
+/* Set info styling */
+.set-info {
+  font-style: italic;
+  position: relative;
+}
+
+.set-info::before {
+  content: '📦';
+  margin-right: 5px;
+}
+
+/* Filter buttons enhancement */
+.filter-btn {
+  position: relative;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.filter-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Search input enhancement */
+.search-enhanced {
+  border-radius: 25px;
+  border: 2px solid #e9ecef;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+}
+
+.search-enhanced:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  transform: scale(1.02);
+}
+
+/* Results count animation */
+.results-count {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Card loading skeleton */
+.card-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 15px;
+  height: 350px;
 }
 
 /* Loading spinner */
@@ -413,4 +416,704 @@ footer {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Animation keyframes */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mascotWave {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  25% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+
+  50% {
+    transform: scale(1.15) rotate(5deg);
+  }
+
+  75% {
+    transform: scale(1.1) rotate(-2deg);
+  }
+}
+
+@keyframes glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.3), 0 0 10px rgba(40, 167, 69, 0.2), 0 0 15px rgba(40, 167, 69, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5), 0 0 20px rgba(40, 167, 69, 0.3), 0 0 30px rgba(40, 167, 69, 0.2);
+  }
+}
+
+@keyframes sparkle {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+@keyframes bubblePop {
+  0% {
+    opacity: 0;
+    transform: scale(0) translateY(20px);
+  }
+
+  20% {
+    opacity: 1;
+    transform: scale(1.1) translateY(-5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Animation classes */
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Mascot animations */
+.mascot-container {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.mascot-container:hover {
+  transform: translateY(-5px);
+}
+
+.hover-glow:hover {
+  animation: glow 2s infinite;
+}
+
+.mascot-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mascot-image {
+  transition: all 0.3s ease;
+  background: transparent !important;
+  mix-blend-mode: multiply;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.mascot-waving {
+  animation: none;
+  /* Let the GIF handle its own animation */
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(40, 167, 69, 0.5);
+  border-radius: 20px !important;
+}
+
+.mascot-idle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(40, 167, 69, 0.4);
+}
+
+/* Enhanced mascot container for GIF */
+.mascot-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mascot-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+/* GIF loading state */
+.mascot-image[src*=".gif"] {
+  background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+  background-size: 200% 200%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Enhanced welcome bubble for GIF interaction */
+.welcome-bubble.show {
+  opacity: 1;
+  animation: bubblePop 0.5s ease-out, float 2s ease-in-out infinite 0.5s;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0px);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+/* Mascot sparkles enhancement for GIF */
+.mascot-container:hover .sparkle {
+  animation-duration: 2s;
+  animation-iteration-count: 3;
+}
+
+/* GIF performance optimization */
+.mascot-image[src*=".gif"] {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Welcome bubble */
+.welcome-bubble {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: #28a745;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  border: 2px solid #28a745;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #28a745;
+}
+
+.welcome-bubble.show {
+  opacity: 1;
+  animation: bubblePop 0.5s ease-out;
+}
+
+/* Sparkles animation */
+.mascot-sparkles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 20px;
+  opacity: 0;
+}
+
+.sparkle-1 {
+  top: 20%;
+  left: 10%;
+  animation: sparkle 3s infinite;
+  animation-delay: 0.5s;
+}
+
+.sparkle-2 {
+  top: 30%;
+  right: 15%;
+  animation: sparkle 3s infinite;
+  animation-delay: 1.5s;
+}
+
+.sparkle-3 {
+  bottom: 25%;
+  left: 20%;
+  animation: sparkle 3s infinite;
+  animation-delay: 2.5s;
+}
+
+/* Content animations */
+.mascot-content-animation {
+  animation-fill-mode: both;
+}
+
+.vision-content .hover-lift {
+  transition: all 0.3s ease;
+}
+
+.vision-content .hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.15);
+}
+
+/* Enhanced card hover effects */
+.card-hover-enhanced {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover-enhanced:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-hover-enhanced::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg) translate(-100%, -100%);
+  transition: all 0.6s ease;
+}
+
+.card-hover-enhanced:hover::before {
+  transform: rotate(45deg) translate(100%, 100%);
+}
+
+/* Stats and Counter Animations */
+.stats-card {
+  padding: 20px;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(40, 167, 69, 0.1), transparent);
+  transition: all 0.6s ease;
+}
+
+.stats-card:hover::before {
+  left: 100%;
+}
+
+.stats-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.2);
+}
+
+.counter {
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.stats-card:hover .counter {
+  transform: scale(1.1);
+  color: #20c997 !important;
+}
+
+/* Enhanced card section animations */
+.card-section-enter {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: cardSectionEnter 0.8s ease-out forwards;
+}
+
+@keyframes cardSectionEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section background with parallax effect */
+.section-bg-animated {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-bg-animated::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><circle cx="30" cy="30" r="2" fill="rgba(40,167,69,0.1)"/></svg>') repeat;
+  animation: bgFloat 20s infinite linear;
+  z-index: -1;
+}
+
+@keyframes bgFloat {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Icon animations in cards */
+.icon-bounce {
+  animation: iconBounce 2s infinite;
+}
+
+@keyframes iconBounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Card descriptions with typewriter effect */
+.card-description h3 {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-description h3::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: #28a745;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Enhanced card type styling */
+.card-type-protection {
+  background: linear-gradient(45deg, #28a745, #20c997);
+}
+
+.card-type-community {
+  background: linear-gradient(45deg, #17a2b8, #6f42c1);
+}
+
+.card-type-disaster {
+  background: linear-gradient(45deg, #dc3545, #fd7e14);
+}
+
+/* Interactive hover states for different card types */
+.card:hover .card-type-protection {
+  box-shadow: 0 0 20px rgba(40, 167, 69, 0.5);
+}
+
+.card:hover .card-type-community {
+  box-shadow: 0 0 20px rgba(23, 162, 184, 0.5);
+}
+
+.card:hover .card-type-disaster {
+  box-shadow: 0 0 20px rgba(220, 53, 69, 0.5);
+}
+
+/* Smooth scroll behavior for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced section transitions */
+section {
+  transition: all 0.3s ease;
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Remove black background from GIF */
+.mascot-image {
+  transition: all 0.3s ease;
+  background: transparent !important;
+  mix-blend-mode: multiply;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+/* Alternative approach for GIF background removal */
+.mascot-image.mascot-waving {
+  background: transparent;
+  backdrop-filter: brightness(1.2);
+}
+
+/* Ensure container doesn't interfere with GIF transparency */
+.mascot-container {
+  background: linear-gradient(145deg, #28a745, #20c997) !important;
+  overflow: visible;
+}
+
+.mascot-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  background: transparent;
+}
+
+/* Enhanced transparency for mascot */
+.mascot-transparent {
+  background-color: transparent !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Card Detail Fullsize Styling */
+.card-detail-fullsize {
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 600px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.card-image-container {
+  position: relative;
+  height: 100%;
+  min-height: 600px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.card-detail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.card-detail-image:hover {
+  transform: scale(1.05);
+}
+
+.card-title-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 2rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.card-image-container:hover .card-title-overlay {
+  opacity: 1;
+}
+
+.card-title-overlay h3 {
+  color: white !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+/* Responsive adjustments for card detail */
+@media (max-width: 991px) {
+  .card-image-container {
+    min-height: 400px;
+  }
+
+  .card-detail-fullsize {
+    min-height: auto;
+  }
+
+  .card-title-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  }
+}
+
+@media (max-width: 576px) {
+  .card-image-container {
+    min-height: 300px;
+  }
+
+  .card-body {
+    padding: 2rem !important;
+  }
+}
+
+/* Enhanced info cards */
+.info-card {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+}
+
+.info-card:hover {
+  border-color: var(--bs-success);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.15);
+  background: linear-gradient(145deg, #f8f9fa, #ffffff);
+}
+
+.info-card strong {
+  color: var(--bs-success);
+  font-weight: 600;
+}
+
+/* Card body enhancements */
+.card-body h2 {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.card-body h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(45deg, var(--bs-success), var(--bs-info));
+  border-radius: 2px;
+}
+
+/* Enhanced button styles for card detail */
+.btn-enhanced {
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 12px 24px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.5s ease;
+}
+
+.btn-enhanced:hover::before {
+  left: 100%;
+}
+
+.btn-enhanced:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }

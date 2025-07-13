@@ -1,10 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { cards } from '../data/cards';
 import type { Card } from '../data/cards';
+
 const CardList = () => {
     const [filter, setFilter] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        setIsLoaded(true);
+    }, []);
 
     const filteredCards = cards.filter((card: Card) => {
         const matchesFilter = filter === 'all' || card.type === filter;
@@ -32,11 +38,11 @@ const CardList = () => {
     };
 
     return (
-        <div className="container py-5">
+        <div className={`container py-5 ${isLoaded ? 'page-transition' : ''}`}>
             {/* Back to Home Button */}
             <div className="row mb-4">
                 <div className="col-12">
-                    <Link to="/" className="btn btn-outline-success">
+                    <Link to="/" className="btn btn-outline-success btn-enhanced">
                         <i className="bi bi-arrow-left me-2"></i>
                         Quay về trang chủ
                     </Link>
@@ -45,7 +51,7 @@ const CardList = () => {
 
             <div className="row">
                 <div className="col-12">
-                    <h1 className="display-4 fw-bold text-center mb-5">Bộ sưu tập thẻ</h1>
+                    <h1 className="display-4 fw-bold text-center mb-5 slide-in-left">Bộ sưu tập thẻ</h1>
 
                     {/* Search and Filter */}
                     <div className="row mb-4">
@@ -81,27 +87,41 @@ const CardList = () => {
 
                     {/* Cards Grid */}
                     <div className="row g-4">
-                        {filteredCards.map((card: Card) => (
+                        {filteredCards.map((card: Card, index) => (
                             <div key={card.id} className="col-lg-4 col-md-6">
-                                <div className="card h-100 shadow-sm hover-lift">
+                                <div className="card h-100 shadow-sm card-hover-enhanced fade-in-up"
+                                    style={{ animationDelay: `${index * 0.1}s` }}>
                                     <div className="card-img-top position-relative" style={{ height: '200px', overflow: 'hidden' }}>
                                         <img
                                             src={card.image}
                                             alt={card.name}
                                             className="w-100 h-100"
-                                            style={{ objectFit: 'cover' }}
+                                            style={{ objectFit: 'cover', transition: 'transform 0.3s ease' }}
                                             onError={(e) => {
                                                 const target = e.target as HTMLImageElement;
                                                 target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg==';
                                             }}
+                                            onMouseEnter={(e) => {
+                                                const target = e.target as HTMLImageElement;
+                                                target.style.transform = 'scale(1.1)';
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                const target = e.target as HTMLImageElement;
+                                                target.style.transform = 'scale(1)';
+                                            }}
                                         />
-                                        <span className={`position-absolute top-0 end-0 m-2 badge ${getTypeBadge(card.type)}`}>
+                                        <span className={`position-absolute top-0 end-0 m-2 badge ${getTypeBadge(card.type)} pulse-badge`}>
                                             {card.type}
                                         </span>
+                                        <div className="card-overlay">
+                                            <div className="card-overlay-content">
+                                                <span className="view-details">Xem chi tiết</span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className="card-body p-4">
                                         <div className="d-flex justify-content-between align-items-start mb-3">
-                                            <div className="fs-4">{getTypeIcon(card.type)}</div>
+                                            <div className="fs-4 type-icon">{getTypeIcon(card.type)}</div>
                                         </div>
 
                                         <h5 className="card-title fw-bold mb-2">{card.name}</h5>
@@ -113,12 +133,13 @@ const CardList = () => {
                                         </p>
 
                                         <div className="d-flex justify-content-between align-items-center">
-                                            <small className="text-muted">{card.set}</small>
+                                            <small className="text-muted set-info">{card.set}</small>
                                             <Link
                                                 to={`/card/${card.id}`}
-                                                className="btn btn-outline-success btn-sm"
+                                                className="btn btn-outline-success btn-sm btn-enhanced"
                                             >
                                                 Xem chi tiết
+                                                <i className="bi bi-arrow-right ms-1"></i>
                                             </Link>
                                         </div>
                                     </div>
