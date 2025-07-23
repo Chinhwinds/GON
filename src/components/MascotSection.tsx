@@ -1,28 +1,4 @@
-import { useState, useEffect } from 'react';
-
 const MascotSection = () => {
-    const [isWaving, setIsWaving] = useState(false);
-    const [hasWelcomed, setHasWelcomed] = useState(false);
-
-    // Animation chào lần đầu khi component mount
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsWaving(true);
-            setHasWelcomed(true);
-            // Dừng animation sau 2 giây
-            setTimeout(() => setIsWaving(false), 2000);
-        }, 1000);
-
-        return () => clearTimeout(timer);
-    }, []);
-
-    const handleMascotHover = () => {
-        if (!isWaving) {
-            setIsWaving(true);
-            setTimeout(() => setIsWaving(false), 2000);
-        }
-    };
-
     return (
         <section id="mascot" className="py-5 bg-white">
             <div className="container">
