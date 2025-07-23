@@ -38,7 +38,20 @@ function App() {
 
         <footer className="bg-dark text-white text-center py-4">
           <div className="container">
-            <p className="mb-0">&copy; 2024 GON Board Game. Tất cả quyền được bảo lưu.</p>
+            <p className="mb-2">&copy; 2024 GON Board Game. Tất cả quyền được bảo lưu.</p>
+            <div className="mb-2">
+              <a href="https://www.facebook.com/profile.php?id=61578148850841" target="_blank" rel="noopener noreferrer" className="text-info fw-bold">
+                <i className="bi bi-facebook me-2"></i>Facebook của tôi
+              </a>
+            </div>
+            <div className="mb-2">
+              <span className="me-3">🌱 Bảo vệ môi trường</span>
+              <span className="me-3">🃏 Board Game Giáo Dục</span>
+              <span className="me-3">💚 Cộng đồng xanh</span>
+            </div>
+            <div>
+              <span className="text-muted">Liên hệ: gon.boardgame@gmail.com</span>
+            </div>
           </div>
         </footer>
       </div>

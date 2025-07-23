@@ -960,7 +960,7 @@ section {
 
 /* Ensure container doesn't interfere with GIF transparency */
 .mascot-container {
-  background: linear-gradient(145deg, #28a745, #20c997) !important;
+  background: linear-gradient(135deg, var(--primary-green), var(--accent-green), var(--dark-green)) !important;
   overflow: visible;
 }
 
@@ -1024,6 +1024,22 @@ section {
   color: white !important;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   margin: 0;
+}
+
+/* Fix hiệu ứng màu chữ trong card detail */
+.card-detail-fullsize .bg-success.bg-opacity-10 {
+  background: rgba(40, 167, 69, 0.10) !important;
+}
+
+.card-detail-fullsize .effect-text {
+  color: #155724 !important;
+  /* Màu xanh đậm, dễ đọc trên nền xanh nhạt */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.card-detail-fullsize .bg-success.bg-opacity-10 p {
+  color: #155724 !important;
 }
 
 /* Responsive adjustments for card detail */
@@ -1116,4 +1132,20 @@ section {
 .btn-enhanced:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Mascot container không có nền xanh */
+/* .mascot-container {
+  background: transparent !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+} */
+
+.mascot-image {
+  background: transparent !important;
+  mix-blend-mode: normal;
+  filter: none;
+}
+
+.mascot-wrapper {
+  background: transparent !important;
 }

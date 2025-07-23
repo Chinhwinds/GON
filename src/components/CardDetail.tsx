@@ -114,7 +114,7 @@ const CardDetail = () => {
                                     <div className="mb-4 fade-in-up" style={{ animationDelay: '0.5s' }}>
                                         <h5 className="text-success fw-bold mb-2">Hiệu ứng</h5>
                                         <div className="bg-success bg-opacity-10 rounded p-3 hover-lift">
-                                            <p className="text-success fw-semibold mb-0">{card.effect}</p>
+                                            <p className="effect-text mb-0">{card.effect}</p>
                                         </div>
                                     </div>
 

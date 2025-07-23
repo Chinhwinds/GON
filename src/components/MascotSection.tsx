@@ -56,29 +56,17 @@ const MascotSection = () => {
 
                     <div className="col-lg-6">
                         <div className="text-center">
-                            <div className="mascot-container bg-success text-white rounded-3 p-5 shadow-lg hover-glow slide-in-right">
-                                <div className="mascot-wrapper mb-3 mascot-transparent" onMouseEnter={handleMascotHover}>
+                            <div className="mascot-container bg-success bg-opacity-90 rounded-4 p-5 shadow-lg border border-3 border-success">
+                                <div className="mascot-wrapper mb-3 mascot-transparent">
                                     <img
                                         src="/img/Mascot-action.gif"
                                         alt="Linh vật GON"
-                                        className={`mascot-image img-fluid rounded mascot-transparent ${isWaving ? 'mascot-waving' : 'mascot-idle'}`}
-                                        style={{
-                                            maxHeight: '200px',
-                                            objectFit: 'contain',
-                                            backgroundColor: 'transparent'
-                                        }}
+                                        className="mascot-image img-fluid rounded mascot-transparent"
+                                        style={{ maxHeight: '200px', objectFit: 'contain', backgroundColor: 'transparent' }}
                                     />
-                                    <div className={`welcome-bubble ${hasWelcomed && isWaving ? 'show' : ''}`}>
-                                        <span>Xin chào! 👋</span>
-                                    </div>
                                 </div>
                                 <h4 className="fw-bold mb-2 mascot-title">Linh vật GON</h4>
                                 <small className="opacity-75 mascot-subtitle">Bảo vệ môi trường cùng chúng tôi</small>
-                                <div className="mascot-sparkles">
-                                    <span className="sparkle sparkle-1">✨</span>
-                                    <span className="sparkle sparkle-2">🌟</span>
-                                    <span className="sparkle sparkle-3">💚</span>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -88,4 +76,4 @@ const MascotSection = () => {
     );
 };
 
-export default MascotSection; 
+export default MascotSection;

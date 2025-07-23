@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 
 const CardGameSection = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [cardCount, setCardCount] = useState(0);
+    const [typeCount, setTypeCount] = useState(0);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -22,6 +24,34 @@ const CardGameSection = () => {
         return () => observer.disconnect();
     }, []);
 
+    // Counter animation
+    useEffect(() => {
+        if (isVisible) {
+            let count = 0;
+            let type = 0;
+            const cardInterval = setInterval(() => {
+                if (count < 24) {
+                    count++;
+                    setCardCount(count);
+                } else {
+                    clearInterval(cardInterval);
+                }
+            }, 40);
+            const typeInterval = setInterval(() => {
+                if (type < 3) {
+                    type++;
+                    setTypeCount(type);
+                } else {
+                    clearInterval(typeInterval);
+                }
+            }, 200);
+            return () => {
+                clearInterval(cardInterval);
+                clearInterval(typeInterval);
+            };
+        }
+    }, [isVisible]);
+
     return (
         <section id="cards" className="py-5 bg-light">
             <div className="container">
@@ -35,14 +65,14 @@ const CardGameSection = () => {
                             <div className="col-md-4">
                                 <div className={`text-center stats-card ${isVisible ? 'fade-in-up' : ''}`}
                                     style={{ animationDelay: '0.2s' }}>
-                                    <div className="display-6 fw-bold text-success mb-2 counter" data-target="24">0</div>
+                                    <div className="display-6 fw-bold text-success mb-2 counter" data-target="24">{cardCount}</div>
                                     <div className="text-muted fw-semibold">Tổng số thẻ</div>
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className={`text-center stats-card ${isVisible ? 'fade-in-up' : ''}`}
                                     style={{ animationDelay: '0.4s' }}>
-                                    <div className="display-6 fw-bold text-success mb-2 counter" data-target="3">0</div>
+                                    <div className="display-6 fw-bold text-success mb-2 counter" data-target="3">{typeCount}</div>
                                     <div className="text-muted fw-semibold">Loại thẻ</div>
                                 </div>
                             </div>
@@ -124,4 +154,4 @@ const CardGameSection = () => {
     )
 }
 
-export default CardGameSection 
+export default CardGameSection
